@@ -30,14 +30,14 @@ class Timer extends React.Component {
       left: this.state.left,
       top: this.state.top
     };
-    if (this.state.renderBall) {
-      return <div className="ball" style={mystyle}></div>;
-    } else
-      return (
+    return (
+      <>
+        <div className="ball" style={mystyle}></div>;
         <button onClick={this.startGame} className="start">
           start
         </button>
-      );
+      </>
+    );
   }
   startTimer() {
     this.id = setInterval(() => {
@@ -57,6 +57,7 @@ class Timer extends React.Component {
   handleArrowClick(event) {
     if (this.state.x === 250 && this.state.y === 250) {
       clearInterval(this.id);
+      return;
     }
     if (event.keyCode === 39) {
       let nx = Number(this.state.x + 5);
